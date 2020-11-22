@@ -27,14 +27,14 @@ https://www.python.org/downloads/release/python-360/
 1.为conda设置清华源
 打开Anaconda Prompt，输入清华仓库镜像，这样更新会快一些：
 
-'''conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/'''
+```conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/```
 
-'''conda config --set show_channel_urls yes'''
+```conda config --set show_channel_urls yes```
 
 2.创建名为“tensorflow”的conda环境
 在命令行中切换到D盘，输入以下代码：
 
-'''conda create -n tensorflow pip python=3.6'''
+```conda create -n tensorflow pip python=3.6```
 
 
 
