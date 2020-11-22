@@ -18,9 +18,9 @@ https://www.python.org/downloads/release/python-360/
 注意安装anaconda时一定要把环境变量加入windows环境中。要没有勾选，安装完后还有手动加入。（两个框都勾上）
 
 验证安装是否成功：打开CMD输入“conda–version”命令，出现conda 4.4.10。若没有的话把你anaconda3安装路径下的这三个路径加入系统环境变量中就行了。
-\anaconda3
-\anaconda3\Scripts
-\anaconda3\Library\bin
+```\anaconda3```
+```\anaconda3\Scripts```
+```\anaconda3\Library\bin```
 
 
 ## 第三步 安装TensorFlow-GPU
