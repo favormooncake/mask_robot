@@ -32,17 +32,30 @@ https://www.python.org/downloads/release/python-360/
 ```conda config --set show_channel_urls yes```
 
 2.创建名为“tensorflow”的conda环境
-在命令行中切换到D盘，输入以下代码：
+在命令行中切换到D盘(自己的安装目录)，输入以下代码：
 
 ```conda create -n tensorflow pip python=3.6```
 
+务必注意一点，在安装完tensroflow后，由于我们是新创建的conda环境，该环境中基本上是空的，有很多包和IDE并没有安装进来，通过以下命令安装Anaconda基础包。
 
+```conda install anaconda```
 
+## 第四步 安装CUDA + cuDNN
+1.下载CUDA + cuDNN
+在这个网址查找CUDA已发布版本：https://developer.nvidia.com/cuda-toolkit-archive
+cuDNN历史版本在该网址下载：https://developer.nvidia.com/rdp/cudnn-archive
+附百度网盘资源：
+CUDA 9.0:：https://pan.baidu.com/s/1_mQgLKmmEGUwMqiQ_QgcFg 提取码：qgy0
+配套的cuDNN 7.0：链接：https://pan.baidu.com/s/1fntIUYhlS9JvQL7g9YfzuQ 提取码：05fi
 
+2.安装 CUDA 9.0 和 cuDnn 7.0
+cuda：
+选择“自定义（高级）  ->  勾选所有
+安装路径不要改，保持默认，一路下来就行。
 
+接下来，解压“cudnn-9.0-windows10-x64-v7.zip”，将以下三个文件夹，打开文件夹内容，分别拷贝到CUDA安装的根目录对应的文件下面，不要直接复制文件夹。
 
-
-
+这样CUDA Toolkit 9.0 和 cuDnn 7.0就已经安装了，进行环境变量的配置，将下面四个路径加入到环境变量中，注意要换成自己的安装路径。
 
 
 
