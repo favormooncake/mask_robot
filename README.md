@@ -56,15 +56,40 @@ cuda：
 接下来，解压“cudnn-9.0-windows10-x64-v7.zip”，将以下三个文件夹，打开文件夹内容，分别拷贝到CUDA安装的根目录对应的文件下面，不要直接复制文件夹。
 
 这样CUDA Toolkit 9.0 和 cuDnn 7.0就已经安装了，进行环境变量的配置，将下面四个路径加入到环境变量中，注意要换成自己的安装路径。
+CUDA_PATH = C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v9.0
+CUDA_LIB_PATH = C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v9.0\lib\x64 
+CUDA_BIN_PATH = C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v9.0\bin
+CUDA_libnvvp = C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v9.0\libnvvp
 
+3.安装Keras作为上层框架调用Tensorflow(注意在tensorflow环境下)
+python
+pip install keras == 2.1.2
 
-
-
-
-
-
-
-
+4.测试
+1）查看是否使用GPU
+import tensorflow as tf
+tf.test.gpu_device_name()
+2）查看在使用哪个GPU
+from tensorflow.python.client import device_lib
+device_lib.list_local_devices()
+3）查看已安装tensorflow版本
+tf.__version__
+4）查看已安装tensorflow安装路径
+tf.__path__
+5）确定自己的TensorFlow是CPU还是GPU的版本
+import numpy
+a = tf.constant([1.0, 2.0, 3.0, 4.0, 5.0, 6.0], shape=[2, 3], name='a')
+b = tf.constant([1.0, 2.0, 3.0, 4.0, 5.0, 6.0], shape=[3, 2], name='b')
+c = tf.matmul(a, b)
+sess = tf.Session(config=tf.ConfigProto(log_device_placement=True))
+print(sess.run(c))
+6）查看keras版本
+import keras as k
+print(k.__version__)
+7）查看tensorflow是否安装成功
+hello = tf.constant('Hello')
+sess=tf.Session()
+print(sess.run(hello))
 
 
 
