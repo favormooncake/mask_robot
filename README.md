@@ -91,6 +91,36 @@ hello = tf.constant('Hello')
 sess=tf.Session()
 print(sess.run(hello))
 
+##第五步，其他需要安装的部分
+1.git安装
+网盘链接：https://pan.baidu.com/s/1G8CUJccBypQ9-AI7_q-qdw 提取码：simu
+2.pycocotools安装
+网盘链接：https://pan.baidu.com/s/19RAjr6Y2VwJLIZ_ZT-Bxqg 提取码：i9vo
+解压，命令行进入解压文件目录，执行以下代码：
+第一步：cd coco/PythonAPI
+       python setup.py build_ext --inplace
+第二部：python setup.py build_ext install
+3.包Shapely安装
+pip install shapely
+4.visual c++ 2015 bulid tools安装
+百度网盘资源：https://pan.baidu.com/s/1BWS01bydmNQQsJaGrMrVcQ 提取码：clah。默认安装就可以。
+##第六步
+1.mask rcnn源码下载
+https://github.com/matterport/Mask_RCNN
+2.mask_rcnn_coco.h5下载
+百度网盘资源：链接：https://pan.baidu.com/s/11bAIAX0l0DJ-p76BlQrTXQ 提取码：meg3
+3.mask rcnn安装
+命令行进入mask rcnn源码文件夹下，把mask_rcnn_coco.h5也放在其中，输入以下命令：
+activate tensorflow
+//你可以自行进文件里面看要求，不用执行这步，有时这步还容易出错，作者就手动检查的
+pip install -r requirements.txt
+python setup.py install
+jupyter notebook
+
+###问题总结
+环境：我在Ubuntu系统下安装的anaconda3，然后并在里面使用env安装的tensorflow，之前安装的jupyter notebook并不是在我的tensorflow环境下安装的，所以你无法引入tensorflow。
+很显然，我的jupyter是anaconda自带的，并不是tensorflow下面的jupyter，所以需要重新的安装。
+
 
 
 
