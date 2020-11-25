@@ -117,18 +117,66 @@ pip install -r requirements.txt
 python setup.py install
 jupyter notebook
 
-###问题总结
-环境：我在Ubuntu系统下安装的anaconda3，然后并在里面使用env安装的tensorflow，之前安装的jupyter notebook并不是在我的tensorflow环境下安装的，所以你无法引入tensorflow。
-很显然，我的jupyter是anaconda自带的，并不是tensorflow下面的jupyter，所以需要重新的安装。
+###关于训练过程
+第一步，制作数据集
+1、安装labelme
+打开 anaconda prompt
+1、输入命令：conda create --name=labelme python=3.6
+2、输入命令：activate labelme
+3、输入命令：pip install pyqt
+4、输入命令：pip install labelme
+安装完毕后再次输入命令：
+activate labelme
+labelme
+即可打开labelme
+2、labelme标注过程
+在Edit界面下可选择多种工具进行真值标注
+3、标注完成后，进入json文件所在的目录，在终端执行以下命令
+labelme_json_to_dataset <文件名>.json
+文件夹下应该生成这五个文件，
+*.png 
+info.yaml 
+label.png 
+label_names.txt 
+label_viz.png
 
+4、如果由于版本原因发现无法生成info.yaml文件
+进入anaconda的安装路径：E:\Users*计算机*\Anaconda3\envs\py36_labelme\Lib\site-packages\labelme\clipthon,更改json_to_dataset.py文件
+#找到如下代码块
+    PIL.Image.fromarray(img).save(osp.join(out_dir, 'img.png'))
+    utils.lblsave(osp.join(out_dir, 'label.png'), lbl)
+    PIL.Image.fromarray(lbl_viz).save(osp.join(out_dir, 'label_viz.png'))
 
+    with open(osp.join(out_dir, 'label_names.txt'), 'w') as f:
+        for lbl_name in label_names:
+            f.write(lbl_name + '\n')
+	# 缺少的部分，进行添加
+    logger.warning('info.yaml is being replaced by label_names.txt')
+    info = dict(label_names=label_names)
+    with open(osp.join(out_dir, 'info.yaml'), 'w') as f:
+        yaml.safe_dump(info, f, default_flow_style=False)
 
+    logger.info('Saved to: {}'.format(out_dir))
 
+if __name__ == '__main__':
+    main()
 
+#在开头引入
+import yaml
+之后再次输入命令labelme_json_to_dataset <文件名>.json，即可得到完整文件
 
+第二步，训练数据集
+对train.py进行文件路径更改，理论上在Python3环境下可以顺利运行，训练后在log文件中可以找到训练后的.h文件
 
-
-
+注意：
+1.tensorflow2.0以上会报错，AttributeError: 'Model' object has no attribute 'metrics_tensors'
+解决方法，就是在报错的model文件的该函数下添加该属性
+self.keras_model.metrics_tensors = []
+2.版本必须进行对应，scikit-image与numpy版本要一致，
+ 例如，h5py==2.10.0，对应scikit-image==1.15.1,对应scikit-image0.15.0
+ 
+ ###关于测试过程
+ 对test.py进行文件路径更改，理论上可以顺利测试，使用上文得到的.h文件作为网络参数，经过测试可以发现准确率较高
 
 
 
