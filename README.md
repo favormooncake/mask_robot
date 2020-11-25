@@ -67,16 +67,21 @@ cuda：
 	pip install keras == 2.1.2
 
 4.测试
+
 1）查看是否使用GPU
 	import tensorflow as tf
 	tf.test.gpu_device_name()
+	
 2）查看在使用哪个GPU
 	from tensorflow.python.client import device_lib
 	device_lib.list_local_devices()
+	
 3）查看已安装tensorflow版本
 	tf.__version__
+	
 4）查看已安装tensorflow安装路径
 	tf.__path__
+	
 5）确定自己的TensorFlow是CPU还是GPU的版本
 	import numpy
 	a = tf.constant([1.0, 2.0, 3.0, 4.0, 5.0, 6.0], shape=[2, 3], name='a')
@@ -84,9 +89,11 @@ cuda：
 	c = tf.matmul(a, b)
 	sess = tf.Session(config=tf.ConfigProto(log_device_placement=True))
 	print(sess.run(c))
+	
 6）查看keras版本
 	import keras as k
 	print(k.__version__)
+	
 7）查看tensorflow是否安装成功
 	hello = tf.constant('Hello')
 	sess=tf.Session()
@@ -95,54 +102,63 @@ cuda：
 ## 第五步 其他需要安装的部分
 1.git安装
 网盘链接：https://pan.baidu.com/s/1G8CUJccBypQ9-AI7_q-qdw 提取码：simu
+
 2.pycocotools安装
 网盘链接：https://pan.baidu.com/s/19RAjr6Y2VwJLIZ_ZT-Bxqg 提取码：i9vo
 解压，命令行进入解压文件目录，执行以下代码：
-第一步：cd coco/PythonAPI
-       python setup.py build_ext --inplace
-第二步：python setup.py build_ext install
+
+第一步：```cd coco/PythonAPI```
+       ```python setup.py build_ext --inplace```
+第二步：```python setup.py build_ext install```
+
 3.包Shapely安装
-pip install shapely
+```pip install shapely```
+
 4.visual c++ 2015 bulid tools安装
-百度网盘资源：https://pan.baidu.com/s/1BWS01bydmNQQsJaGrMrVcQ 提取码：clah。默认安装就可以。
-##第六步
+百度网盘资源：https://pan.baidu.com/s/1BWS01bydmNQQsJaGrMrVcQ 提取码：clah,默认安装就可以。
+
+## 第六步
 1.mask rcnn源码下载
 https://github.com/matterport/Mask_RCNN
+
 2.mask_rcnn_coco.h5下载
 百度网盘资源：链接：https://pan.baidu.com/s/11bAIAX0l0DJ-p76BlQrTXQ 提取码：meg3
+
 3.mask rcnn安装
 命令行进入mask rcnn源码文件夹下，把mask_rcnn_coco.h5也放在其中，输入以下命令：
-activate tensorflow
+```activate tensorflow```
 //可以自行进文件里面看要求，不用执行这步
-pip install -r requirements.txt
-python setup.py install
-jupyter notebook
+```pip install -r requirements.txt```
+```python setup.py install```
+```jupyter notebook```
 
-###关于训练过程
-第一步，制作数据集
+## 关于训练过程
+### 制作数据集
 1、安装labelme
 打开 anaconda prompt
-1、输入命令：conda create --name=labelme python=3.6
-2、输入命令：activate labelme
-3、输入命令：pip install pyqt
-4、输入命令：pip install labelme
-安装完毕后再次输入命令：
-	activate labelme
-	labelme
-即可打开labelme
+1、输入命令：```conda create --name=labelme python=3.6```
+2、输入命令：```activate labelme```
+3、输入命令：```pip install pyqt```
+4、输入命令：```pip install labelme```
+安装完毕后再次输入命令即可打开labelme：
+```activate labelme```
+```labelme```
+
 2、labelme标注过程
-在Edit界面下可选择多种工具进行真值标注
+在Edit界面下可选择多种工具进行真值标注，为了提高精确度，建议放大后手动逐点标注，编写脚本还原标注点
+
 3、标注完成后，进入json文件所在的目录，在终端执行以下命令
-	labelme_json_to_dataset <文件名>.json
+```labelme_json_to_dataset <文件名>.json```
+
 文件夹下应该生成这五个文件，
-*.png 
-info.yaml 
-label.png 
-label_names.txt 
-label_viz.png
+```*.png ```
+```info.yaml ```
+```label.png ```
+```label_names.txt ```
+```label_viz.png```
 
 4、如果由于版本原因发现无法生成info.yaml文件
-进入anaconda的安装路径：E:\Users*计算机*\Anaconda3\envs\py36_labelme\Lib\site-packages\labelme\clipthon,更改json_to_dataset.py文件
+进入anaconda的安装路径：D:\mask-rcnn\anaconda\envs\labelme\Lib\site-packages\labelme\cli,更改json_to_dataset.py文件
 #找到如下代码块
     PIL.Image.fromarray(img).save(osp.join(out_dir, 'img.png'))
     utils.lblsave(osp.join(out_dir, 'label.png'), lbl)
@@ -163,7 +179,7 @@ if __name__ == '__main__':
     main()
 
 #在开头引入
-	import yaml
+	```import yaml```
 之后再次输入命令labelme_json_to_dataset <文件名>.json，即可得到完整文件
 
 第二步，训练数据集
