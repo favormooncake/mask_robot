@@ -56,40 +56,41 @@ cuda：
 接下来，解压“cudnn-9.0-windows10-x64-v7.zip”，将以下三个文件夹，打开文件夹内容，分别拷贝到CUDA安装的根目录对应的文件下面，不要直接复制文件夹。
 
 这样CUDA Toolkit 9.0 和 cuDnn 7.0就已经安装了，进行环境变量的配置，将下面四个路径加入到环境变量中，注意要换成自己的安装路径。
-CUDA_PATH = C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v9.0
-CUDA_LIB_PATH = C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v9.0\lib\x64 
-CUDA_BIN_PATH = C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v9.0\bin
-CUDA_libnvvp = C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v9.0\libnvvp
+```CUDA_PATH = C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v9.0```
+```CUDA_LIB_PATH = C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v9.0\lib\x64 ```
+```CUDA_BIN_PATH = C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v9.0\bin```
+```CUDA_libnvvp = C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v9.0\libnvvp```
+
 
 3.安装Keras作为上层框架调用Tensorflow(注意在tensorflow环境下)
-python
-pip install keras == 2.1.2
+	python
+	pip install keras == 2.1.2
 
 4.测试
 1）查看是否使用GPU
-import tensorflow as tf
-tf.test.gpu_device_name()
+	import tensorflow as tf
+	tf.test.gpu_device_name()
 2）查看在使用哪个GPU
-from tensorflow.python.client import device_lib
-device_lib.list_local_devices()
+	from tensorflow.python.client import device_lib
+	device_lib.list_local_devices()
 3）查看已安装tensorflow版本
-tf.__version__
+	tf.__version__
 4）查看已安装tensorflow安装路径
-tf.__path__
+	tf.__path__
 5）确定自己的TensorFlow是CPU还是GPU的版本
-import numpy
-a = tf.constant([1.0, 2.0, 3.0, 4.0, 5.0, 6.0], shape=[2, 3], name='a')
-b = tf.constant([1.0, 2.0, 3.0, 4.0, 5.0, 6.0], shape=[3, 2], name='b')
-c = tf.matmul(a, b)
-sess = tf.Session(config=tf.ConfigProto(log_device_placement=True))
-print(sess.run(c))
+	import numpy
+	a = tf.constant([1.0, 2.0, 3.0, 4.0, 5.0, 6.0], shape=[2, 3], name='a')
+	b = tf.constant([1.0, 2.0, 3.0, 4.0, 5.0, 6.0], shape=[3, 2], name='b')
+	c = tf.matmul(a, b)
+	sess = tf.Session(config=tf.ConfigProto(log_device_placement=True))
+	print(sess.run(c))
 6）查看keras版本
-import keras as k
-print(k.__version__)
+	import keras as k
+	print(k.__version__)
 7）查看tensorflow是否安装成功
-hello = tf.constant('Hello')
-sess=tf.Session()
-print(sess.run(hello))
+	hello = tf.constant('Hello')
+	sess=tf.Session()
+	print(sess.run(hello))
 
 ##第五步，其他需要安装的部分
 1.git安装
@@ -99,7 +100,7 @@ print(sess.run(hello))
 解压，命令行进入解压文件目录，执行以下代码：
 第一步：cd coco/PythonAPI
        python setup.py build_ext --inplace
-第二部：python setup.py build_ext install
+第二步：python setup.py build_ext install
 3.包Shapely安装
 pip install shapely
 4.visual c++ 2015 bulid tools安装
@@ -112,7 +113,7 @@ https://github.com/matterport/Mask_RCNN
 3.mask rcnn安装
 命令行进入mask rcnn源码文件夹下，把mask_rcnn_coco.h5也放在其中，输入以下命令：
 activate tensorflow
-//你可以自行进文件里面看要求，不用执行这步，有时这步还容易出错，作者就手动检查的
+//可以自行进文件里面看要求，不用执行这步
 pip install -r requirements.txt
 python setup.py install
 jupyter notebook
@@ -126,13 +127,13 @@ jupyter notebook
 3、输入命令：pip install pyqt
 4、输入命令：pip install labelme
 安装完毕后再次输入命令：
-activate labelme
-labelme
+	activate labelme
+	labelme
 即可打开labelme
 2、labelme标注过程
 在Edit界面下可选择多种工具进行真值标注
 3、标注完成后，进入json文件所在的目录，在终端执行以下命令
-labelme_json_to_dataset <文件名>.json
+	labelme_json_to_dataset <文件名>.json
 文件夹下应该生成这五个文件，
 *.png 
 info.yaml 
@@ -162,7 +163,7 @@ if __name__ == '__main__':
     main()
 
 #在开头引入
-import yaml
+	import yaml
 之后再次输入命令labelme_json_to_dataset <文件名>.json，即可得到完整文件
 
 第二步，训练数据集
