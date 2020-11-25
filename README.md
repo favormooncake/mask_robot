@@ -182,6 +182,15 @@ if __name__ == '__main__':
 	```import yaml```
 之后再次输入命令labelme_json_to_dataset <文件名>.json，即可得到完整文件
 
+我们首先将数据集分为四个文件夹，分别是 cv2_mask、json、labelme_json、pic
+
+cv2_mask----》存放labelme指令生成的 label.png 文件
+json 文件夹----》 存放我们使用labelme 标注后生成的那个 json文件
+labelme_json 文件夹 ---》 存放前面输入指令后转化生成的json文件夹
+pic文件夹  ----》 存放原始图片
+为了便于不同图片，将上述四个文件夹存放文件以序号表示，例如：
+001.png,001.json,002_jason文件夹,001.png(原图)
+
 第二步，训练数据集
 对train.py进行文件路径更改，理论上在Python3环境下可以顺利运行，训练后在log文件中可以找到训练后的.h文件
 
