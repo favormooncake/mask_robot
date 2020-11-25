@@ -92,7 +92,7 @@ cuda：
 	sess=tf.Session()
 	print(sess.run(hello))
 
-##第五步，其他需要安装的部分
+## 第五步 其他需要安装的部分
 1.git安装
 网盘链接：https://pan.baidu.com/s/1G8CUJccBypQ9-AI7_q-qdw 提取码：simu
 2.pycocotools安装
