@@ -1,5 +1,9 @@
-## mask_robot
-改进mask-rcnn，制作机械臂等工厂中移动物体数据集，训练
+###移动机器人定位与导航论文相关开源部分代码
+包括以下内容：
+1. 制作机械臂等工厂中移动物体数据集，训练，结果权重文件（后续根据需求不断扩充）
+2. 移动机器人的固定路线跟踪速度规划曲线s_move.m
+3. xbox one手柄通过ADS通讯协议与倍福工控机通讯程序，python实现按键监听controller.py
+4.
 
 # 关于mask-rcnn在windows10下的配置
 作者安装的是CUDA 9.0、cuDnn 7.0、python 3.5或者3.6、anaconda3的5.1版本、tensorflow-gpu 1.5.0、kears 2.1.4。
