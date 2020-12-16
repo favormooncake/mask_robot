@@ -2,7 +2,8 @@
 包括以下内容：
 1. 制作机械臂等工厂中移动物体数据集，训练，结果权重文件（后续根据需求不断扩充）
 2. 移动机器人的固定路线跟踪速度规划曲线s_move.m
-3. xbox one手柄通过ADS通讯协议与倍福工控机通讯程序，python实现按键监听controller.py
+3. 倍福TWINCAT3软件的手柄信号接受以及四台松下电机控制PLC文件
+4. xbox one手柄通过ADS通讯协议与倍福工控机通讯程序，python实现按键监听controller.py
 4.
 
 # 关于mask-rcnn在windows10下的配置
